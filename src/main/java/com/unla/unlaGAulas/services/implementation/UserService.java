@@ -18,9 +18,6 @@ import org.springframework.stereotype.Service;
 import com.unla.unlaGAulas.entities.UserRole;
 import com.unla.unlaGAulas.repositories.IUserRepository;
 
-
-
-
 @Service("userService")
 public class UserService implements UserDetailsService {
 

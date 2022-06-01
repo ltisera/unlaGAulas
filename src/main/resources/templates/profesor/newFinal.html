@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Crear Final</title>
+</head>
+<body>
+	<form action="#" th:action="@{/profesor/createFinal}" th:object="${notaPedidoFinal}" method="post">
+	<p>Turno: <select th:field="*{turno}">
+    	<option th:value="'M'" th:text="Mañana"></option>
+   	 	<option th:value="'T'" th:text="Tarde"></option>
+   	 	<option th:value="'N'" th:text="Noche"></option>
+	</select></p>
+	<p>Aula: <select th:field="*{aula.idAula}" >
+    	<option th:each="aula : ${aulas}" th:value="${aula.idAula}" th:text="'Aula ' + ${aula.idAula} + ' ' + ${aula.edificio.edificio}"></option>
+	</select></p>
+	<p>Cantidad de estudiantes: <input type="number" th:field="*{cantEstudiantes}" /></p>
+	<p>Materia: <select th:field="*{materia.idMateria}">
+    	<option th:each="materia : ${materias}" th:value="${materia.idMateria}" th:text="${materia.materia}"></option>
+	</select></p>
+	<p>Observaciones: <input type="text" th:field="*{observaciones}" /></p>
+	<p>Fecha de examen: <input type="date" th:field="*{fechaExamen}" /></p>
+	<input type="hidden" th:value="${user.username}" th:attr="name='usuarioSolicitante'" />
+	<input type="submit" value="crear"/>
+</form>
+</body>
+</html>

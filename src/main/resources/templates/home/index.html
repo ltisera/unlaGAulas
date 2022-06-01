@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Sistema aulas UNLa</title>
+	</head>
+	<body>
+		<h1>Prueba</h1>
+		<p> Bienvenido <span th:text="${user.username}" /></p>
+		<p> Tu rol es:  <span th:text="${user.getAuthorities()}" /></p>
+		
+	</body>
+</html>
