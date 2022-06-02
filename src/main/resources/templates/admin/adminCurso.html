@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>Notas de pedido de final</title>
+</head>
+<body>
+	<table border="1px">
+	<caption>Notas de pedido de curso<caption>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Fecha realizada</th>
+			<th>Turno</th>
+			<th>Aula</th>
+			<th>Cantidad de estudiantes</th>
+			<th>Materia</th>
+			<th>Observaciones</th>
+			<th>Codigo de curso</th>
+			<th>Fechas de cursada</th>
+			<th>Porcentaje de cursada</th>
+			<th>Estado</th>
+			<th>usuarioSolicitante</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="notaPedidoCurso : ${notaPedidoCursos}">
+			<td><span th:text="${notaPedidoCurso.idNotaPedidoCurso}" /></td>
+			<td><span th:text="${notaPedidoCurso.fecha}" /></td>
+			<td><span th:text="${notaPedidoCurso.turno}" /></td>
+			<td><span th:text="${notaPedidoCurso.aula.numero}+ ' ' + ${notaPedidoCurso.aula.edificio.edificio}" /></td>
+			<td><span th:text="${notaPedidoCurso.cantEstudiantes}" /></td>
+			<td><span th:text="${notaPedidoCurso.materia.materia}"/></td>
+			<td><span th:text="${notaPedidoCurso.observaciones}"/></td>
+			<td><span th:text="${notaPedidoCurso.codCurso}"/></td>
+			<td><span th:text="${notaPedidoCurso.fechasCursada}"/></td>
+			<td><span th:text="${notaPedidoCurso.porcentajeCursada}"/></td>
+			<td><span th:text="${notaPedidoCurso.estado}"/></td>
+			<td><span th:text="${notaPedidoCurso.usuarioSolicitante}"/></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

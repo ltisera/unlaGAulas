@@ -6,30 +6,8 @@
 	</head>
 	<body>
 		indice de admin
+		<a href="/admin/adminFinal">Ver notas de pedido de final</a>
+		<a href="/admin/adminCurso">Ver notas de pedido de curso</a>
+		<a href="/admin/adminUser">Ver usuarios</a>
 	</body>
-<table border="1px">
-	<caption>Notas de pedido de final<caption>
-	<thead>
-		<tr>
-			<th>Id</th>
-			<th>Fecha realizada</th>
-			<th>Turno</th>
-			<th>Aula</th>
-			<th>Cantidad de estudiantes</th>
-			<th>Materia</th>
-			<th>Fecha de examen</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr th:each="notaPedidoFinal : ${notaPedidoFinales}">
-			<td><span th:text="${notaPedidoFinal.idNotaPedidoFinal}" /></td>
-			<td><span th:text="${notaPedidoFinal.fecha}" /></td>
-			<td><span th:text="${notaPedidoFinal.turno}" /></td>
-			<td><span th:text="${notaPedidoFinal.aula.numero}+ ' ' + ${notaPedidoFinal.aula.edificio.edificio}" /></td>
-			<td><span th:text="${notaPedidoFinal.cantEstudiantes}" /></td>
-			<td><span th:text="${notaPedidoFinal.materia.materia}"/></td>
-			<td><span th:text="${notaPedidoFinal.fechaExamen}"/></td>
-		</tr>
-	</tbody>
-</table>
 </html>

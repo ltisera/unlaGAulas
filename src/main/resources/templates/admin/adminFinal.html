@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>Notas de pedido de final</title>
+</head>
+<body>
+	<table border="1px">
+	<caption>Notas de pedido de final<caption>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Fecha realizada</th>
+			<th>Turno</th>
+			<th>Aula</th>
+			<th>Cantidad de estudiantes</th>
+			<th>Materia</th>
+			<th>Fecha de examen</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="notaPedidoFinal : ${notaPedidoFinales}">
+			<td><span th:text="${notaPedidoFinal.idNotaPedidoFinal}" /></td>
+			<td><span th:text="${notaPedidoFinal.fecha}" /></td>
+			<td><span th:text="${notaPedidoFinal.turno}" /></td>
+			<td><span th:text="${notaPedidoFinal.aula.numero}+ ' ' + ${notaPedidoFinal.aula.edificio.edificio}" /></td>
+			<td><span th:text="${notaPedidoFinal.cantEstudiantes}" /></td>
+			<td><span th:text="${notaPedidoFinal.materia.materia}"/></td>
+			<td><span th:text="${notaPedidoFinal.fechaExamen}"/></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

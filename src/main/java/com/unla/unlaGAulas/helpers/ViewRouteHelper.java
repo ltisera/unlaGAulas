@@ -11,6 +11,9 @@ public class ViewRouteHelper {
 	
 	//ADMIN
 	public final static String ADMIN_INDEX = "admin/index";
+	public final static String ADMIN_FINAL = "admin/adminFinal";
+	public final static String ADMIN_CURSO = "admin/adminCurso";
+	public final static String ADMIN_USER = "admin/adminUser";
 	
 	//PROFESOR
 	public final static String PROFESOR_INDEX = "profesor/index";
