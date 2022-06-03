@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>Notas de pedido de final</title>
+</head>
+<body>
+<form action="#" th:action="@{/admin/createEspacioFinal}" th:object="${espacio}" method="post">
+	<div th:object="${notaPedidoFinal}" >
+	<input type="hidden" th:value="${notaPedidoFinal.fechaExamen}" th:attr="name='fecha'" />
+	<input type="hidden" th:value="${notaPedidoFinal.turno}" th:attr="name='espacio.turno'" />
+	<input type="hidden" th:value="${notaPedidoFinal.aula.idAula}" th:attr="name='espacio.aula.idAula'" />
+	<input type="hidden" th:value="0" th:attr="name='espacio.libre'" />
+	<input type="hidden" th:value="${true}" th:attr="name='estado'" />
+	<input type="hidden" th:field="*{idNotaPedidoFinal}" />
+	<input type="hidden" th:field="*{aula.idAula}" />
+	<input type="hidden" th:field="*{materia.idMateria}" />
+	<input type="hidden" th:field="*{cantEstudiantes}" />
+	<input type="hidden" th:field="*{turno}" />
+	<input type="hidden" th:field="*{fechaExamen}" />
+	<input type="hidden" th:field="*{usuarioSolicitante}" />
+	<input type="hidden" th:field="*{observaciones}" />
+	<span th:if="${ocupado == true}">El espacio esta ocupado, no puedes asignarlo a esta nota de pedido de final
+	<a class="nav-link" href="/admin/adminFinal">Volver</a>
+	</span>
+	<span th:if="${ocupado == false}">El espacio esta disponible, pulsa "Crear" para reservarlo
+	<input type="submit" value="Crear"/></span>
+</form>
+</body>
+</html>

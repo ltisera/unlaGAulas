@@ -41,5 +41,10 @@ public class NotaPedidoFinalService implements INotaPedidoFinalService {
 			return false;
 		}
 	}
+
+	@Override
+	public NotaPedidoFinal findByidNotaPedidoFinal(int id) {
+		return notaPedidoFinalRepository.findByidNotaPedidoFinal(id);
+	}
 	
 }

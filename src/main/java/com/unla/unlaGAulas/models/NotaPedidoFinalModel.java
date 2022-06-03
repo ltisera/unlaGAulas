@@ -2,7 +2,7 @@ package com.unla.unlaGAulas.models;
 
 import java.time.LocalDate;
 
-import javax.validation.constraints.Min;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import com.unla.unlaGAulas.entities.Aula;
 import com.unla.unlaGAulas.entities.Materia;
@@ -20,7 +20,6 @@ public class NotaPedidoFinalModel {
 	
 	private Aula aula;
 	
-	@Min(3)
 	private int cantEstudiantes;
 	
 	private Materia materia;
@@ -29,6 +28,8 @@ public class NotaPedidoFinalModel {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaExamen;
+	
+	private boolean estado;
 	
 	private String usuarioSolicitante;
 
@@ -41,6 +42,7 @@ public class NotaPedidoFinalModel {
 		this.materia = materia;
 		this.observaciones = observaciones;
 		this.fechaExamen = fechaExamen;
+		this.estado = false;
 		this.usuarioSolicitante = usuarioSolicitante;
 	}
 	

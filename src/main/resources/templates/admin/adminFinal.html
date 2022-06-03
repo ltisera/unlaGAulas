@@ -16,6 +16,8 @@
 			<th>Cantidad de estudiantes</th>
 			<th>Materia</th>
 			<th>Fecha de examen</th>
+			<th>Estado</th>
+			<th>Accion</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -27,8 +29,12 @@
 			<td><span th:text="${notaPedidoFinal.cantEstudiantes}" /></td>
 			<td><span th:text="${notaPedidoFinal.materia.materia}"/></td>
 			<td><span th:text="${notaPedidoFinal.fechaExamen}"/></td>
+			<td><span th:if="${notaPedidoFinal.estado == false }">No Aceptado</span>
+			<span th:unless="${notaPedidoFinal.estado == false }">Aceptado</span></td>
+			<td><a th:href="@{/admin/crearEspacioFinal/{id}(id=${notaPedidoFinal.idNotaPedidoFinal})}">Aceptar</a></td>		
 		</tr>
 	</tbody>
 </table>
+
 </body>
 </html>

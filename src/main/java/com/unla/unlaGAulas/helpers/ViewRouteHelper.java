@@ -14,6 +14,7 @@ public class ViewRouteHelper {
 	public final static String ADMIN_FINAL = "admin/adminFinal";
 	public final static String ADMIN_CURSO = "admin/adminCurso";
 	public final static String ADMIN_USER = "admin/adminUser";
+	public final static String ADMIN_FINAL_ESPACIO = "admin/adminFinalEspacio";
 	
 	//PROFESOR
 	public final static String PROFESOR_INDEX = "profesor/index";
@@ -24,5 +25,6 @@ public class ViewRouteHelper {
 	/**** Redirects ****/
 	public final static String ROUTE = "/index";
 	public final static String PROFESOR_ROOT = "/profesor/index";
+	public final static String ADMIN_ROOT_FINAL = "/admin/adminFinal";
 
 }
