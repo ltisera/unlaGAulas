@@ -3,7 +3,6 @@ package com.unla.unlaGAulas.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +14,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.unla.unlaGAulas.entities.Aula;
 import com.unla.unlaGAulas.entities.Materia;
 
+import com.unla.unlaGAulas.entities.User;
 import com.unla.unlaGAulas.helpers.ViewRouteHelper;
 import com.unla.unlaGAulas.models.NotaPedidoCursoModel;
 import com.unla.unlaGAulas.models.NotaPedidoFinalModel;
@@ -23,6 +23,7 @@ import com.unla.unlaGAulas.service.IAulaService;
 import com.unla.unlaGAulas.service.IMateriaService;
 import com.unla.unlaGAulas.service.INotaPedidoCursoService;
 import com.unla.unlaGAulas.service.INotaPedidoFinalService;
+import com.unla.unlaGAulas.services.implementation.UserService;
 
 @Controller
 @RequestMapping("/profesor")
@@ -47,6 +48,10 @@ public class ProfesorController {
 	@Autowired
 	@Qualifier("userRepository")
 	IUserRepository userRepository;
+	
+	@Autowired
+	@Qualifier("userService")
+	private UserService userService;
 	
 	@GetMapping("/index")
 	public ModelAndView indexPrueba() {
@@ -90,6 +95,15 @@ public class ProfesorController {
 	public RedirectView createCurso(@ModelAttribute("notaPedidoCurso") NotaPedidoCursoModel notaPedidoCursoModel) {
 		notaPedidoCursoService.insertOrUpdate(notaPedidoCursoModel);
 		return new RedirectView(ViewRouteHelper.PROFESOR_ROOT);
+	}
+	
+	@GetMapping("/profesorUser")
+	public ModelAndView profesorUser() {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PROFESOR_USER);
+		mAV.addObject("usuarios", userService.getAll());
+		mAV.addObject("usuario", new User());
+		
+		return mAV;
 	}
 	
 }
