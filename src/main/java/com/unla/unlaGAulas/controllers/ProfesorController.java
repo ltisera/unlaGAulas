@@ -91,6 +91,13 @@ public class ProfesorController {
 		return mAV;
 	}
 	
+	@PostMapping("/agregarFechas")
+	public ModelAndView agregarFechas(@ModelAttribute("notaPedidoCurso") NotaPedidoCursoModel notaPedidoCursoModel) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PROFESOR_FECHAS);
+		mAV.addObject("notaPedidoCurso", notaPedidoCursoModel);
+		return mAV;
+	}
+	
 	@PostMapping("/createCurso")
 	public RedirectView createCurso(@ModelAttribute("notaPedidoCurso") NotaPedidoCursoModel notaPedidoCursoModel) {
 		notaPedidoCursoService.insertOrUpdate(notaPedidoCursoModel);

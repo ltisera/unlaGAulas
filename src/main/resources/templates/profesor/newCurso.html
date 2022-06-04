@@ -5,7 +5,7 @@
 <title>Crear Curso</title>
 </head>
 <body>
-	<form action="#" th:action="@{/profesor/createCurso}" th:object="${notaPedidoCurso}" method="post">
+	<form action="#" th:action="@{/profesor/agregarFechas}" th:object="${notaPedidoCurso}" method="post">
 	<p>Turno: <select th:field="*{turno}">
     	<option th:value="'M'" th:text="Mañana"></option>
    	 	<option th:value="'T'" th:text="Tarde"></option>
@@ -20,14 +20,13 @@
 	</select></p>
 	<p>Observaciones: <input type="text" th:field="*{observaciones}" /></p>
 	<p>Codigo del curso: <input type="text" th:field="*{codCurso}" /></p>
-	<p>Fecha de examen: <input type="date" th:field="*{fechasCursada}" /></p>
 	<p>Porcentaje de cursada: <select th:field="*{porcentajeCursada}">
 		<option value="25">25% Presencial</option>
 		<option value="50">50% Presencial</option>
 		<option value="100">100% Presencial</option>
 	</select></p>
 	<input type="hidden" th:value="${user.username}" th:attr="name='usuarioSolicitante'" />
-	<input type="submit" value="crear"/>
+	<input type="submit" value="Agregar fechas"/>
 </form>
 </body>
 </html>

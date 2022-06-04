@@ -21,6 +21,7 @@ public class ViewRouteHelper {
 	public final static String PROFESOR_NEWFINAL = "profesor/newFinal";
 	public final static String PROFESOR_NEWCURSO = "profesor/newCurso";
 	public final static String PROFESOR_USER = "profesor/profesorUser";
+	public final static String PROFESOR_FECHAS = "profesor/agregarFechas";
 	
 	/**** Redirects ****/
 	public final static String ROUTE = "/index";
