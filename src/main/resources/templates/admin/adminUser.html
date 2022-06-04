@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>Usuarios</title>
+</head>
+<body>
+	<table border= "1px">
+	<caption>Usuarios</caption>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Username</th>
+			<th>Password</th>
+			<th>Fecha creacion</th>
+			<th>Fecha actualizacion</th>
+			<th>Rol de usuario</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="usuario : ${usuarios}">
+			<td><span th:text="${usuario.id}"/></td>
+			<td><span th:text="${usuario.username}"/></td>
+			<td><span th:text="${usuario.password}"/></td>
+			<td><span th:text="${usuario.createdAt}"/></td>
+			<td><span th:text="${usuario.updatedAt}"/></td>
+			<td><span th:text="${usuario.getUserRoles().iterator().next().getRole()}"/></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

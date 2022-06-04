@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.unla.unlaGAulas.entities.NotaPedidoCurso;
 import com.unla.unlaGAulas.entities.UserRole;
 import com.unla.unlaGAulas.repositories.IUserRepository;
 
@@ -43,5 +44,9 @@ public class UserService implements UserDetailsService {
 			grantedAuthorities.add(new SimpleGrantedAuthority(userRole.getRole()));
 		}
 		return new ArrayList<GrantedAuthority>(grantedAuthorities);
+	}
+	
+	public List<com.unla.unlaGAulas.entities.User> getAll() {
+		return userRepository.findAll();
 	}
 }

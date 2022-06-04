@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>Crear Curso</title>
+</head>
+<body>
+	<form action="#" th:action="@{/profesor/createCurso}" th:object="${notaPedidoCurso}" method="post">
+	<input type="hidden" th:field="*{turno}" />
+	<input type="hidden" th:field="*{aula.idAula}" />
+	<input type="hidden" th:field="*{cantEstudiantes}" />
+	<input type="hidden" th:field="*{materia.idMateria}" />
+	<input type="hidden" th:field="*{observaciones}" />
+	<input type="hidden" th:field="*{codCurso}" />
+	<input type="hidden" th:field="*{porcentajeCursada}" />
+	<input type="hidden" th:field="*{usuarioSolicitante}" />
+	<span th:if="${notaPedidoCurso.porcentajeCursada == 25}">
+	<th:block th:each="i: ${#numbers.sequence(0, 3)}">
+    	<input type="date" th:field="*{fechasCursada}" />
+	</th:block>
+	</span>
+	<span th:if="${notaPedidoCurso.porcentajeCursada == 50}">
+	<th:block th:each="i: ${#numbers.sequence(0, 6)}">
+    	<input type="date" th:field="*{fechasCursada}" />
+	</th:block>
+	</span>
+	<span th:if="${notaPedidoCurso.porcentajeCursada == 100}">
+	<th:block th:each="i: ${#numbers.sequence(0, 13)}">
+    	<input type="date" th:field="*{fechasCursada}" />
+	</th:block>
+	</span>
+	<input type="submit" value="crear"/>
+</form>
+</body>
+</html>

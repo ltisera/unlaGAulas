@@ -63,7 +63,6 @@ public class NotaPedidoFinal {
 		this.materia = materia;
 		this.observaciones = observaciones;
 		this.fechaExamen = fechaExamen;
-		this.estado = false; //siempre que se crea no esta aceptado
 		this.usuarioSolicitante = usuarioSolicitante;
 	}
 

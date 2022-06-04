@@ -23,6 +23,7 @@ import com.unla.unlaGAulas.service.IAulaService;
 import com.unla.unlaGAulas.service.IMateriaService;
 import com.unla.unlaGAulas.service.INotaPedidoCursoService;
 import com.unla.unlaGAulas.service.INotaPedidoFinalService;
+import com.unla.unlaGAulas.services.implementation.UserService;
 
 @Controller
 @RequestMapping("/profesor")
@@ -47,6 +48,10 @@ public class ProfesorController {
 	@Autowired
 	@Qualifier("userRepository")
 	IUserRepository userRepository;
+	
+	@Autowired
+	@Qualifier("userService")
+	private UserService userService;
 	
 	@GetMapping("/index")
 	public ModelAndView indexPrueba() {
@@ -86,10 +91,26 @@ public class ProfesorController {
 		return mAV;
 	}
 	
+	@PostMapping("/agregarFechas")
+	public ModelAndView agregarFechas(@ModelAttribute("notaPedidoCurso") NotaPedidoCursoModel notaPedidoCursoModel) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PROFESOR_FECHAS);
+		mAV.addObject("notaPedidoCurso", notaPedidoCursoModel);
+		return mAV;
+	}
+	
 	@PostMapping("/createCurso")
 	public RedirectView createCurso(@ModelAttribute("notaPedidoCurso") NotaPedidoCursoModel notaPedidoCursoModel) {
 		notaPedidoCursoService.insertOrUpdate(notaPedidoCursoModel);
 		return new RedirectView(ViewRouteHelper.PROFESOR_ROOT);
+	}
+	
+	@GetMapping("/profesorUser")
+	public ModelAndView profesorUser() {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PROFESOR_USER);
+		mAV.addObject("usuarios", userService.getAll());
+		mAV.addObject("usuario", new com.unla.unlaGAulas.entities.User());
+		
+		return mAV;
 	}
 	
 }

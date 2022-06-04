@@ -36,6 +36,8 @@ public class NotaPedidoCursoModel {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Set<LocalDate> fechasCursada = new HashSet<LocalDate>();
 	
+	private boolean estado;
+	
 	private int porcentajeCursada;
 
 	private String usuarioSolicitante;
@@ -51,6 +53,7 @@ public class NotaPedidoCursoModel {
 		this.observaciones = observaciones;
 		this.codCurso = codCurso;
 		this.fechasCursada = fechasCursada;
+		this.estado = false;
 		this.porcentajeCursada = porcentajeCursada;
 		this.usuarioSolicitante = usuarioSolicitante;
 	}

@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,6 +25,7 @@ public class Espacio {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idEspacio;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="fecha")
 	private LocalDate fecha;
 	

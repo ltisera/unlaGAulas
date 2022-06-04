@@ -75,7 +75,6 @@ public class NotaPedidoCurso {
 		this.codCurso = codCurso;
 		this.fechasCursada = fechasCursada;
 		this.porcentajeCursada = porcentajeCursada;
-		this.estado = false; //siempre que se crea no esta aceptado
 		this.usuarioSolicitante = usuarioSolicitante;
 	}
 
