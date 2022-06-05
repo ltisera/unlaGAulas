@@ -17,6 +17,7 @@
 			<th>Materia</th>
 			<th>Fecha de examen</th>
 			<th>Estado</th>
+			<th>usuarioSolicitante</th>
 			<th>Accion</th>
 		</tr>
 	</thead>
@@ -31,6 +32,7 @@
 			<td><span th:text="${notaPedidoFinal.fechaExamen}"/></td>
 			<td><span th:if="${notaPedidoFinal.estado == false }">No Aceptado</span>
 			<span th:unless="${notaPedidoFinal.estado == false }">Aceptado</span></td>
+			<td><span th:text="${notaPedidoFinal.usuarioSolicitante}"/></td>
 			<td><a th:href="@{/admin/crearEspacioFinal/{id}(id=${notaPedidoFinal.idNotaPedidoFinal})}">Aceptar</a></td>		
 		</tr>
 	</tbody>
