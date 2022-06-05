@@ -108,21 +108,17 @@ public class AdminController {
 	}
 	
 	@PostMapping("/createEspacioFinal")
-	public ModelAndView createEspacioFinal(@ModelAttribute("notaPedidoFinal") NotaPedidoFinalModel notaPedidoFinalModel) {
+	public RedirectView createEspacioFinal(@ModelAttribute("notaPedidoFinal") NotaPedidoFinalModel notaPedidoFinalModel) {
 		notaPedidoFinalService.insertOrUpdate(notaPedidoFinalModel);
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.ADMIN_ASIGNAR_ESPACIO);
 		Espacio espacio = espacioService.findExactDate(notaPedidoFinalModel.getFechaExamen(), notaPedidoFinalModel.getTurno(), notaPedidoFinalModel.getAula().getIdAula());
-		boolean hayId = false;
+		Espacio nuevoEspacio = null;
 		if (espacio != null) {
-			hayId = true;
-			mAV.addObject("idDelEspacioPrevio", espacio.getIdEspacio());
+			nuevoEspacio = new Espacio(espacio.getIdEspacio(), espacio.getFecha(), espacio.getTurno(), espacio.getAula(), false);
+		} else {
+			nuevoEspacio = new Espacio(notaPedidoFinalModel.getFechaExamen(), notaPedidoFinalModel.getTurno(), notaPedidoFinalModel.getAula(), false);
 		}
-		mAV.addObject("espacio", new Espacio());
-		mAV.addObject("hayId", hayId);
-		mAV.addObject("fechaDeLaNotaPedido", notaPedidoFinalModel.getFechaExamen());
-		mAV.addObject("turnoDeLaNotaPedido", notaPedidoFinalModel.getTurno());
-		mAV.addObject("idDeLaNotaPedidoAula", notaPedidoFinalModel.getAula().getIdAula());
-		return mAV;
+		espacioService.insertOrUpdate(nuevoEspacio);
+		return new RedirectView(ViewRouteHelper.ADMIN_ROOT_FINAL);
 	}
 	
 	@GetMapping("/crearEspacioCurso/{id}")
@@ -148,44 +144,22 @@ public class AdminController {
 	}
 	
 	@PostMapping("/createEspacioCurso")
-	public ModelAndView createEspacioCurso(@ModelAttribute("notaPedidoCurso") NotaPedidoCursoModel notaPedidoCursoModel) {
+	public RedirectView createEspacioCurso(@ModelAttribute("notaPedidoCurso") NotaPedidoCursoModel notaPedidoCursoModel) {
 		notaPedidoCursoService.insertOrUpdate(notaPedidoCursoModel);
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.ADMIN_ASIGNAR_MULTIPLES_ESPACIOS);
-		int size = notaPedidoCursoModel.getFechasCursada().size();
-		List<Espacio> listaEspacios = new ArrayList<Espacio>();
-		List <LocalDate> listaDeFechas = new ArrayList<>(notaPedidoCursoModel.getFechasCursada());
-		mAV.addObject("listaEspacios", listaEspacios);
-		mAV.addObject("listaDeFechas", listaDeFechas);
-		mAV.addObject("turnoDeLaNotaPedido", notaPedidoCursoModel.getTurno());
-		mAV.addObject("idDeLaNotaPedidoAula", notaPedidoCursoModel.getAula().getIdAula());
-		int listaDeId[] = new int[size];
 		Espacio espacio = null;
-		char turno = notaPedidoCursoModel.getTurno();
-		int idAula = notaPedidoCursoModel.getAula().getIdAula();
-		for (int i = 0; i<size; i++) {
-			espacio = espacioService.findExactDate(listaDeFechas.get(i), turno, idAula);
-			if (espacio == null) {
-				listaDeId[i] = -1;
+		Espacio nuevoEspacio = null;
+		List <LocalDate> listaDeFechas = new ArrayList<>(notaPedidoCursoModel.getFechasCursada());
+		for (int i = 0; i<notaPedidoCursoModel.getFechasCursada().size();i++) {
+			espacio = espacioService.findExactDate(listaDeFechas.get(i), notaPedidoCursoModel.getTurno(), notaPedidoCursoModel.getAula().getIdAula());
+			if (espacio != null) {
+				nuevoEspacio = new Espacio(espacio.getIdEspacio(), espacio.getFecha(), espacio.getTurno(), espacio.getAula(), false);
 			} else {
-				listaDeId[i] = espacio.getIdEspacio();
+				nuevoEspacio = new Espacio(listaDeFechas.get(i), notaPedidoCursoModel.getTurno(), notaPedidoCursoModel.getAula(), false);
 			}
-		}
-		mAV.addObject("listaDeIdEspacio", listaDeId);
-		return mAV;
-	}
-	
-	@PostMapping("/asignarEspacio")
-	public RedirectView asignarEspacio(@ModelAttribute("espacio") Espacio espacio) {
-		espacioService.insertOrUpdate(espacio);
-		return new RedirectView(ViewRouteHelper.ADMIN_ROOT_FINAL);
-	}
-	
-	@PostMapping("/asignarMultiplesEspacios")
-	public RedirectView asignarMultiplesEspacios(@ModelAttribute("listaEspacios")List<Espacio> listaEspacios) {
-		for (int i = 0; i<listaEspacios.size();i++) {
-			espacioService.insertOrUpdate(listaEspacios.get(i));
+			espacioService.insertOrUpdate(nuevoEspacio);
 		}
 		return new RedirectView(ViewRouteHelper.ADMIN_ROOT_CURSO);
 	}
+
 
 }

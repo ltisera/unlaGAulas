@@ -16,8 +16,7 @@ public class ViewRouteHelper {
 	public final static String ADMIN_USER = "admin/adminUser";
 	public final static String ADMIN_FINAL_ESPACIO = "admin/adminFinalEspacio";
 	public final static String ADMIN_CURSO_ESPACIO = "admin/adminCursoEspacio";
-	public final static String ADMIN_ASIGNAR_ESPACIO = "admin/asignarEspacio";
-	public final static String ADMIN_ASIGNAR_MULTIPLES_ESPACIOS = "admin/asignarMultiplesEspacios";
+
 	
 	//PROFESOR
 	public final static String PROFESOR_INDEX = "profesor/index";
