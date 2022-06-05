@@ -18,11 +18,12 @@
 	<input type="hidden" th:field="*{observaciones}" />
 	<input type="hidden" th:field="*{codCurso}" />
 	<input type="hidden" th:field="*{porcentajeCursada}" />
-	<span th:if="${ocupado == true}">El espacio esta ocupado, no puedes asignarlo a esta nota de pedido de curso
-	<a class="nav-link" href="/admin/adminCurso">Volver</a>
+	<span th:if="${ocupado == true}"><h2>El espacio esta ocupado, no puedes asignarlo a esta nota de pedido de curso</h2>
+	<a class="nav-link" href="/admin/adminCurso"><h2>Volver</h2></a>
 	</span>
-	<span th:if="${ocupado == false}">El espacio esta disponible, pulsa "Crear" para reservarlo
-	<input type="submit" value="Crear"/></span>
+	<span th:if="${ocupado == false}"><h2>El espacio esta disponible, pulsa "Crear" para reservarlo</h2>
+	<input type="submit" style="height:40px; width:80px" value="Crear"/>
+	<a class="nav-link" href="/admin/adminCurso"><h2>Volver</h2></a></span>
 </form>
 </body>
 </html>

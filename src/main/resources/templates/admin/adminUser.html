@@ -6,27 +6,36 @@
 </head>
 <body>
 	<table border= "1px">
-	<caption>Usuarios</caption>
+	<caption><h1>Usuarios</h1></caption>
 	<thead>
 		<tr>
 			<th>Id</th>
 			<th>Username</th>
-			<th>Password</th>
 			<th>Fecha creacion</th>
 			<th>Fecha actualizacion</th>
 			<th>Rol de usuario</th>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>Tipo de documento</th>
+			<th>Documento</th>
+			<th>Correo electronico</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr th:each="usuario : ${usuarios}">
 			<td><span th:text="${usuario.id}"/></td>
 			<td><span th:text="${usuario.username}"/></td>
-			<td><span th:text="${usuario.password}"/></td>
 			<td><span th:text="${usuario.createdAt}"/></td>
 			<td><span th:text="${usuario.updatedAt}"/></td>
 			<td><span th:text="${usuario.getUserRoles().iterator().next().getRole()}"/></td>
+			<td><span th:text="${usuario.nombre}"/></td>
+			<td><span th:text="${usuario.apellido}"/></td>
+			<td><span th:text="${usuario.tipoDeDocumento}"/></td>
+			<td><span th:text="${usuario.nroDeDocumento}"/></td>
+			<td><span th:text="${usuario.correoElectronico}"/></td>
 		</tr>
 	</tbody>
 </table>
+<h2><p><a href="/index">Volver</a></p></h2>
 </body>
 </html>

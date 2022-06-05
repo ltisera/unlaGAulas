@@ -16,11 +16,12 @@
 	<input type="hidden" th:field="*{fechaExamen}" />
 	<input type="hidden" th:field="*{usuarioSolicitante}" />
 	<input type="hidden" th:field="*{observaciones}" />
-	<span th:if="${ocupado == true}">El espacio esta ocupado, no puedes asignarlo a esta nota de pedido de final
-	<a class="nav-link" href="/admin/adminFinal">Volver</a>
+	<span th:if="${ocupado == true}"><h2>El espacio esta ocupado, no puedes asignarlo a esta nota de pedido de final</h2>
+	<a class="nav-link" href="/admin/adminFinal"><h2>Volver</h2></a>
 	</span>
-	<span th:if="${ocupado == false}">El espacio esta disponible, pulsa "Crear" para reservarlo
-	<input type="submit" value="Crear"/></span>
+	<span th:if="${ocupado == false}"><h2>El espacio esta disponible, pulsa "Crear" para reservarlo</h2>
+	<input type="submit" style="height:40px; width:80px" value="Crear"/>
+	<a class="nav-link" href="/admin/adminFinal"><h2>Volver</h2></a></span>
 </form>
 </body>
 </html>

@@ -5,6 +5,7 @@
 <title>Crear Curso</title>
 </head>
 <body>
+	<h1><center>Creacion de curso</h1>
 	<form action="#" th:action="@{/profesor/agregarFechas}" th:object="${notaPedidoCurso}" method="post">
 	<p>Turno: <select th:field="*{turno}">
     	<option th:value="'M'" th:text="Mañana"></option>
@@ -28,5 +29,6 @@
 	<input type="hidden" th:value="${user.username}" th:attr="name='usuarioSolicitante'" />
 	<input type="submit" value="Agregar fechas"/>
 </form>
+<h2><p><a href="/index">Volver</a></p></h2>
 </body>
 </html>

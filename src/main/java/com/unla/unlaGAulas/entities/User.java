@@ -44,19 +44,48 @@ public class User {
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 	
+	@Column(name="nombre")
+	private String nombre;
+	
+	@Column(name="apellido")
+	private String apellido;
+	
+	@Column(name="tipoDeDocumento")
+	private String tipoDeDocumento;
+	
+	@Column(name="nroDeDocumento")
+	private String nroDeDocumento;
+	
+	@Column(name="correoElectronico")
+	private String correoElectronico;
+	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
 	private Set<UserRole> userRoles = new HashSet<UserRole>();
-	
-	public User(String username, String password, boolean enabled) {
+
+	public User(String username, String password, boolean enabled, String nombre, String apellido,
+			String tipoDeDocumento, String nroDeDocumento, String correoElectronico, Set<UserRole> userRoles) {
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
-	}
-	
-	public User(String username, String password, boolean enabled, Set<UserRole> userRoles) {
-		this.username = username;
-		this.password = password;
-		this.enabled = enabled;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.tipoDeDocumento = tipoDeDocumento;
+		this.nroDeDocumento = nroDeDocumento;
+		this.correoElectronico = correoElectronico;
 		this.userRoles = userRoles;
 	}
+	
+	public User(String username, String password, boolean enabled, String nombre, String apellido,
+			String tipoDeDocumento, String nroDeDocumento, String correoElectronico) {
+		this.username = username;
+		this.password = password;
+		this.enabled = enabled;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.tipoDeDocumento = tipoDeDocumento;
+		this.nroDeDocumento = nroDeDocumento;
+		this.correoElectronico = correoElectronico;
+	}
+	
+	
 }
