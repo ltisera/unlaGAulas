@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>Notas de pedido de final</title>
+</head>
+<body>
+<form action="#" th:action="@{/admin/asignarMultiplesEspacios}" th:object="${listaEspacios}" id="myForm" method="post">
+	<th:block th:each="i: ${#numbers.sequence(0,listaDeFechas.size()-1)}">
+    	<input type="hidden" th:value="${listaDeFechas.get(i)}" th:attr="name='listaEspacios.get(i).fecha'" />
+    	<span th:if="${listaDeIdEspacio[i] != -1}">
+		<input type="hidden" th:value="${listaDeIdEspacio[i]}" th:attr="name='listaEspacios.get(i).idEspacio'" /></span>
+		<input type="hidden" th:value="${turnoDeLaNotaPedido}" th:attr="name='listaEspacios.get(i).turno'" />
+		<input type="hidden" th:value="${idDeLaNotaPedidoAula}" th:attr="name='listaEspacios.get(i).aula.idAula'" />
+		<input type="hidden" th:value="0" th:attr="name='listaEspacios.getEspacios().get(i).libre'" />
+	</th:block>
+</form>
+<script>
+window.onload=function() { 
+  document.getElementById("myForm").submit(); 
+} 
+</script>
+</body>
+</html>

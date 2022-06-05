@@ -16,6 +16,9 @@ public class NotaPedidoFinalModel {
 	
 	private int idNotaPedidoFinal;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate fecha;
+	
 	private char turno;
 	
 	private Aula aula;
@@ -46,6 +49,18 @@ public class NotaPedidoFinalModel {
 		this.usuarioSolicitante = usuarioSolicitante;
 	}
 	
-	
+	public NotaPedidoFinalModel(int idNotaPedidoFinal, LocalDate fecha, char turno, Aula aula, int cantEstudiantes,
+			Materia materia, String observaciones, LocalDate fechaExamen, String usuarioSolicitante) {
+		this.setIdNotaPedidoFinal(idNotaPedidoFinal);
+		this.fecha = fecha;
+		this.turno = turno;
+		this.aula = aula;
+		this.cantEstudiantes = cantEstudiantes;
+		this.materia = materia;
+		this.observaciones = observaciones;
+		this.fechaExamen = fechaExamen;
+		this.estado = false;
+		this.usuarioSolicitante = usuarioSolicitante;
+	}
 	
 }

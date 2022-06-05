@@ -21,6 +21,7 @@
 			<th>Porcentaje de cursada</th>
 			<th>Estado</th>
 			<th>usuarioSolicitante</th>
+			<th>Accion</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -35,8 +36,10 @@
 			<td><span th:text="${notaPedidoCurso.codCurso}"/></td>
 			<td><span th:text="${notaPedidoCurso.fechasCursada}"/></td>
 			<td><span th:text="${notaPedidoCurso.porcentajeCursada}"/></td>
-			<td><span th:text="${notaPedidoCurso.estado}"/></td>
+			<td><span th:if="${notaPedidoCurso.estado == false }">No Aceptado</span>
+			<span th:unless="${notaPedidoCurso.estado == false }">Aceptado</span></td>
 			<td><span th:text="${notaPedidoCurso.usuarioSolicitante}"/></td>
+			<td><a th:href="@{/admin/crearEspacioCurso/{id}(id=${notaPedidoCurso.idNotaPedidoCurso})}">Aceptar</a></td>	
 		</tr>
 	</tbody>
 </table>

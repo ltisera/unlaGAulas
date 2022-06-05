@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>Notas de pedido de final</title>
+</head>
+<body>
+<form action="#" th:action="@{/admin/asignarEspacio}" th:object="${espacio}" id="myForm" method="post">
+	<span th:if="${hayId == true}">
+	<input type="hidden" th:value="${idDelEspacioPrevio}" th:attr="name='idEspacio'" /></span>
+	<input type="hidden" th:value="${fechaDeLaNotaPedido}" th:attr="name='fecha'" />
+	<input type="hidden" th:value="${turnoDeLaNotaPedido}" th:attr="name='turno'" />
+	<input type="hidden" th:value="${idDeLaNotaPedidoAula}" th:attr="name='aula.idAula'" />
+	<input type="hidden" th:value="0" th:attr="name='libre'" />
+
+</form>
+<script>
+window.onload=function() { 
+  document.getElementById("myForm").submit(); 
+} 
+</script>
+</body>
+</html>

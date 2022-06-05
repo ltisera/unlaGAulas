@@ -42,4 +42,9 @@ public class NotaPedidoCursoService implements INotaPedidoCursoService {
 		}
 	}
 
+	@Override
+	public NotaPedidoCurso findByidNotaPedidoCurso(int id) {
+		return notaPedidoCursoRepository.findByidNotaPedidoCurso(id);
+	}
+
 }

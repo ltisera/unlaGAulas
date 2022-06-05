@@ -10,6 +10,8 @@ public interface INotaPedidoCursoService {
 
 	public List<NotaPedidoCurso> getAll();
 	
+	public NotaPedidoCurso findByidNotaPedidoCurso(int id);
+	
 	public NotaPedidoCursoModel insertOrUpdate(NotaPedidoCursoModel notaPedidoCursoModel);
 	
 	public boolean remove(int id);

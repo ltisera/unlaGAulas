@@ -15,6 +15,9 @@ public class ViewRouteHelper {
 	public final static String ADMIN_CURSO = "admin/adminCurso";
 	public final static String ADMIN_USER = "admin/adminUser";
 	public final static String ADMIN_FINAL_ESPACIO = "admin/adminFinalEspacio";
+	public final static String ADMIN_CURSO_ESPACIO = "admin/adminCursoEspacio";
+	public final static String ADMIN_ASIGNAR_ESPACIO = "admin/asignarEspacio";
+	public final static String ADMIN_ASIGNAR_MULTIPLES_ESPACIOS = "admin/asignarMultiplesEspacios";
 	
 	//PROFESOR
 	public final static String PROFESOR_INDEX = "profesor/index";
@@ -27,5 +30,6 @@ public class ViewRouteHelper {
 	public final static String ROUTE = "/index";
 	public final static String PROFESOR_ROOT = "/profesor/index";
 	public final static String ADMIN_ROOT_FINAL = "/admin/adminFinal";
+	public final static String ADMIN_ROOT_CURSO = "/admin/adminCurso";
 
 }

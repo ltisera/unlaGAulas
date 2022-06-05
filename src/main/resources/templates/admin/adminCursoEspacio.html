@@ -2,22 +2,24 @@
 <html>
 <head>
 <meta charset="utf-8"> 
-<title>Notas de pedido de final</title>
+<title>Notas de pedido de Curso</title>
 </head>
 <body>
-<form action="#" th:action="@{/admin/createEspacioFinal}" th:object="${notaPedidoFinal}" method="post">
+<form action="#" th:action="@{/admin/createEspacioCurso}" th:object="${notaPedidoCurso}" method="post">
 	<input type="hidden" th:value="${true}" th:attr="name='estado'" />
-	<input type="hidden" th:field="*{idNotaPedidoFinal}" />
+	<input type="hidden" th:field="*{idNotaPedidoCurso}" />
 	<input type="hidden" th:field="*{fecha}" />
 	<input type="hidden" th:field="*{aula.idAula}" />
 	<input type="hidden" th:field="*{materia.idMateria}" />
 	<input type="hidden" th:field="*{cantEstudiantes}" />
 	<input type="hidden" th:field="*{turno}" />
-	<input type="hidden" th:field="*{fechaExamen}" />
+	<input type="hidden" th:field="*{fechasCursada}" />	
 	<input type="hidden" th:field="*{usuarioSolicitante}" />
 	<input type="hidden" th:field="*{observaciones}" />
-	<span th:if="${ocupado == true}">El espacio esta ocupado, no puedes asignarlo a esta nota de pedido de final
-	<a class="nav-link" href="/admin/adminFinal">Volver</a>
+	<input type="hidden" th:field="*{codCurso}" />
+	<input type="hidden" th:field="*{porcentajeCursada}" />
+	<span th:if="${ocupado == true}">El espacio esta ocupado, no puedes asignarlo a esta nota de pedido de curso
+	<a class="nav-link" href="/admin/adminCurso">Volver</a>
 	</span>
 	<span th:if="${ocupado == false}">El espacio esta disponible, pulsa "Crear" para reservarlo
 	<input type="submit" value="Crear"/></span>
