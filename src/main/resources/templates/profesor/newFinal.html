@@ -13,7 +13,7 @@
    	 	<option th:value="'N'" th:text="Noche"></option>
 	</select></p>
 	<p>Aula: <select th:field="*{aula.idAula}" >
-    	<option th:each="aula : ${aulas}" th:value="${aula.idAula}" th:text="'Aula ' + ${aula.idAula} + ' ' + ${aula.edificio.edificio}"></option>
+    	<option th:each="aula : ${aulas}" th:value="${aula.idAula}" th:text="'Aula ' + ${aula.numero} + ' ' + ${aula.edificio.edificio}"></option>
 	</select></p>
 	<p>Cantidad de estudiantes: <input type="number" th:field="*{cantEstudiantes}" /></p>
 	<p>Materia: <select th:field="*{materia.idMateria}">
