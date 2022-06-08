@@ -6,6 +6,7 @@
 		<!-- Bootstrap core CSS -->
 		<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 		<link href="/css/modern-business.css" rel="stylesheet" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	</head>
 	<body>
 	    <!-- Page Content -->
@@ -16,7 +17,7 @@
 	        <form th:action="@{/loginprocess}" method="post">
 		      	<input type="text" name="username" id="username" placeholder="Username" />
 		      	<input type="password" name="password" id="password" placeholder="Password" />
-		      	<input type="submit" />
+		      	<input type="submit" class = "btn btn-primary mr-2"/>
 	      	</form>
 	      </div>
 	    </div>

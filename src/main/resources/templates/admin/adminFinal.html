@@ -3,40 +3,102 @@
 <head>
 <meta charset="utf-8"> 
 <title>Notas de pedido de final</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<script type="application/javascript">
+		function entraColor(quienllama){
+			console.log(quienllama);
+			var miBoton = document.getElementById(quienllama);
+			miBoton.classList.add("active");
+			miBoton.classList.remove("text-white");
+		}
+		
+		function saleColor(quienllama){
+			console.log("Sale");
+			var miBoton = document.getElementById(quienllama);
+			miBoton.classList.remove("active");
+			miBoton.classList.add("text-white");
+		}
+	</script>
 </head>
 <body>
-	<table border="1px">
-	<caption><h1><center>Notas de pedido de final</h1><caption>
-	<thead>
-		<tr>
-			<th>Id</th>
-			<th>Fecha realizada</th>
-			<th>Turno</th>
-			<th>Aula</th>
-			<th>Cantidad de estudiantes</th>
-			<th>Materia</th>
-			<th>Fecha de examen</th>
-			<th>Estado</th>
-			<th>usuarioSolicitante</th>
-			<th>Accion</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr th:each="notaPedidoFinal : ${notaPedidoFinales}">
-			<td><span th:text="${notaPedidoFinal.idNotaPedidoFinal}" /></td>
-			<td><span th:text="${notaPedidoFinal.fecha}" /></td>
-			<td><span th:text="${notaPedidoFinal.turno}" /></td>
-			<td><span th:text="${notaPedidoFinal.aula.numero}+ ' ' + ${notaPedidoFinal.aula.edificio.edificio}" /></td>
-			<td><span th:text="${notaPedidoFinal.cantEstudiantes}" /></td>
-			<td><span th:text="${notaPedidoFinal.materia.materia}"/></td>
-			<td><span th:text="${notaPedidoFinal.fechaExamen}"/></td>
-			<td><span th:if="${notaPedidoFinal.estado == false }">No Aceptado</span>
-			<span th:unless="${notaPedidoFinal.estado == false }">Aceptado</span></td>
-			<td><span th:text="${notaPedidoFinal.usuarioSolicitante}"/></td>
-			<td><a th:href="@{/admin/crearEspacioFinal/{id}(id=${notaPedidoFinal.idNotaPedidoFinal})}">Aceptar</a></td>		
-		</tr>
-	</tbody>
-</table>
+	<div class="container-fluid">
+
+		<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark row position-fixed" style="width: 15%; height: 100%;">
+			<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+			<svg class="bi me-2" width="40" height="32"></svg>
+			<span class="fs-4">unla Gaula </span>
+			</a>
+
+			<hr>
+			<ul class="nav nav-pills flex-column mb-auto">
+			
+				<li class="nav-item">
+					<a id="miBoton1" href="/admin/adminFinal" class="nav-link text-white" aria-current="page" onmouseout="saleColor('miBoton1')" onmouseover="entraColor('miBoton1')">
+						<svg class="bi me-2" width="16" height="16"></svg>
+						Ver pedido de final
+					</a>
+				</li>
+
+			<li>
+				<a id="miBoton2" href="/admin/adminCurso" class="nav-link text-white" onmouseout="saleColor('miBoton2')" onmouseover="entraColor('miBoton2')">
+				<svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+				Ver pedido de curso
+				</a>
+			</li>
+			<li>
+				<a id="miBoton3" href="/admin/adminUser" class="nav-link text-white" onmouseout="saleColor('miBoton3')" onmouseover="entraColor('miBoton3')">
+				<svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+				Ver usuarios
+				</a>
+			</li>
+			<li>
+				<a id="miBoton4" href="/logout" class="nav-link text-white" onmouseout="saleColor('miBoton4')" onmouseover="entraColor('miBoton4')">
+				<svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+				Cerrar Sesion
+				</a>
+			</li>
+			
+			</ul>
+			<hr>
+			
+		
+		</div>
+		<div class="col offset-2" >	
+			<table border= "1px" class="table table-striped table-bordered table condensed table-hover table-responsive ">
+			<caption><h1><center>Notas de pedido de final</h1><caption>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Fecha realizada</th>
+					<th>Turno</th>
+					<th>Aula</th>
+					<th>Cantidad de estudiantes</th>
+					<th>Materia</th>
+					<th>Fecha de examen</th>
+					<th>Estado</th>
+					<th>usuarioSolicitante</th>
+					<th>Accion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="notaPedidoFinal : ${notaPedidoFinales}">
+					<td><span th:text="${notaPedidoFinal.idNotaPedidoFinal}" /></td>
+					<td><span th:text="${notaPedidoFinal.fecha}" /></td>
+					<td><span th:text="${notaPedidoFinal.turno}" /></td>
+					<td><span th:text="${notaPedidoFinal.aula.numero}+ ' ' + ${notaPedidoFinal.aula.edificio.edificio}" /></td>
+					<td><span th:text="${notaPedidoFinal.cantEstudiantes}" /></td>
+					<td><span th:text="${notaPedidoFinal.materia.materia}"/></td>
+					<td><span th:text="${notaPedidoFinal.fechaExamen}"/></td>
+					<td><span th:if="${notaPedidoFinal.estado == false }">No Aceptado</span>
+					<span th:unless="${notaPedidoFinal.estado == false }">Aceptado</span></td>
+					<td><span th:text="${notaPedidoFinal.usuarioSolicitante}"/></td>
+					<td><a th:href="@{/admin/crearEspacioFinal/{id}(id=${notaPedidoFinal.idNotaPedidoFinal})}">Aceptar</a></td>		
+				</tr>
+			</tbody>
+			</table>
+		</div>
+	</div>
 <a class="nav-link" href="/index"><h2>Volver</h2></a>
 </body>
 </html>
