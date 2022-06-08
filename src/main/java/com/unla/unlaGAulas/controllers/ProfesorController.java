@@ -1,5 +1,12 @@
 package com.unla.unlaGAulas.controllers;
 
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,12 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.lowagie.text.DocumentException;
 import com.unla.unlaGAulas.entities.Aula;
 import com.unla.unlaGAulas.entities.Materia;
-
 import com.unla.unlaGAulas.helpers.ViewRouteHelper;
 import com.unla.unlaGAulas.models.NotaPedidoCursoModel;
 import com.unla.unlaGAulas.models.NotaPedidoFinalModel;
+import com.unla.unlaGAulas.pdf.UserProfilePDF;
 import com.unla.unlaGAulas.repositories.IUserRepository;
 import com.unla.unlaGAulas.service.IAulaService;
 import com.unla.unlaGAulas.service.IMateriaService;
@@ -111,6 +119,20 @@ public class ProfesorController {
 		mAV.addObject("usuario", new com.unla.unlaGAulas.entities.User());
 		
 		return mAV;
+	}
+	
+	@GetMapping("/generarPDF")
+	public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
+		response.setContentType("application/pdf");
+		DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+		String currentDateTime = dateFormatter.format(new java.util.Date());
+		String headerKey = "Content-Disposition";
+		String headerValue = "attachment; filename=UserList_" + currentDateTime + ".pdf";
+		response.setHeader(headerKey, headerValue);
+
+		List<com.unla.unlaGAulas.entities.User> userList = userService.getAll();
+		UserProfilePDF pdf = new UserProfilePDF(userList);
+		pdf.export(response);
 	}
 	
 }

@@ -3,32 +3,95 @@
 <head>
 <meta charset="utf-8"> 
 <title>Crear Curso</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<script type="application/javascript">
+		function entraColor(quienllama){
+			console.log(quienllama);
+			var miBoton = document.getElementById(quienllama);
+			miBoton.classList.add("active");
+			miBoton.classList.remove("text-white");
+		}
+		
+		function saleColor(quienllama){
+			console.log("Sale");
+			var miBoton = document.getElementById(quienllama);
+			miBoton.classList.remove("active");
+			miBoton.classList.add("text-white");
+		}
+	</script>
 </head>
 <body>
-	<h1><center>Creacion de curso</h1>
-	<form action="#" th:action="@{/profesor/agregarFechas}" th:object="${notaPedidoCurso}" method="post">
-	<p>Turno: <select th:field="*{turno}">
-    	<option th:value="'M'" th:text="Mañana"></option>
-   	 	<option th:value="'T'" th:text="Tarde"></option>
-   	 	<option th:value="'N'" th:text="Noche"></option>
-	</select></p>
-	<p>Aula: <select th:field="*{aula.idAula}" >
-    	<option th:each="aula : ${aulas}" th:value="${aula.idAula}" th:text="'Aula ' + ${aula.numero} + ' ' + ${aula.edificio.edificio}"></option>
-	</select></p>
-	<p>Cantidad de estudiantes: <input type="number" th:field="*{cantEstudiantes}" /></p>
-	<p>Materia: <select th:field="*{materia.idMateria}">
-    	<option th:each="materia : ${materias}" th:value="${materia.idMateria}" th:text="${materia.materia}"></option>
-	</select></p>
-	<p>Observaciones: <input type="text" th:field="*{observaciones}" /></p>
-	<p>Codigo del curso: <input type="text" th:field="*{codCurso}" /></p>
-	<p>Porcentaje de cursada: <select th:field="*{porcentajeCursada}">
-		<option value="25">25% Presencial</option>
-		<option value="50">50% Presencial</option>
-		<option value="100">100% Presencial</option>
-	</select></p>
-	<input type="hidden" th:value="${user.username}" th:attr="name='usuarioSolicitante'" />
-	<input type="submit" value="Agregar fechas"/>
-</form>
+
+	<div class="container-fluid">
+		<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark row position-fixed" style="width: 15%; height: 100%;">
+			<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+			<svg class="bi me-2" width="40" height="32"></svg>
+			<span class="fs-4">unla Gaula </span>
+			</a>
+
+			<hr>
+			<ul class="nav nav-pills flex-column mb-auto">
+			
+				<li class="nav-item">
+					<a id="miBoton1" href="/profesor/newFinal" class="nav-link text-white" aria-current="page" onmouseout="saleColor('miBoton1')" onmouseover="entraColor('miBoton1')">
+						<svg class="bi me-2" width="16" height="16"></svg>
+						Crear Final
+					</a>
+				</li>
+
+			<li>
+				<a id="miBoton2" href="/profesor/newCurso" class="nav-link text-white" onmouseout="saleColor('miBoton2')" onmouseover="entraColor('miBoton2')">
+				<svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+				Crear Curso
+				</a>
+			</li>
+			<li>
+				<a id="miBoton3" href="/profesor/profesorUser" class="nav-link text-white" onmouseout="saleColor('miBoton3')" onmouseover="entraColor('miBoton3')">
+				<svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+				Ver usuarios
+				</a>
+			</li>
+			<li>
+				<a id="miBoton4" href="/logout" class="nav-link text-white" onmouseout="saleColor('miBoton4')" onmouseover="entraColor('miBoton4')">
+				<svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+				Cerrar Sesion
+				</a>
+			</li>
+			
+			</ul>
+			<hr>
+			
+		
+		</div>
+		
+		<div class="col offset-2" >
+			<h1><center>Creacion de curso</h1>
+			<form action="#" th:action="@{/profesor/agregarFechas}" th:object="${notaPedidoCurso}" method="post">
+			<p>Turno: <select th:field="*{turno}">
+				<option th:value="'M'" th:text="Mañana"></option>
+				<option th:value="'T'" th:text="Tarde"></option>
+				<option th:value="'N'" th:text="Noche"></option>
+			</select></p>
+			<p>Aula: <select th:field="*{aula.idAula}" >
+				<option th:each="aula : ${aulas}" th:value="${aula.idAula}" th:text="'Aula ' + ${aula.numero} + ' ' + ${aula.edificio.edificio}"></option>
+			</select></p>
+			<p>Cantidad de estudiantes: <input type="number" th:field="*{cantEstudiantes}" /></p>
+			<p>Materia: <select th:field="*{materia.idMateria}">
+				<option th:each="materia : ${materias}" th:value="${materia.idMateria}" th:text="${materia.materia}"></option>
+			</select></p>
+			<p>Observaciones: <input type="text" th:field="*{observaciones}" /></p>
+			<p>Codigo del curso: <input type="text" th:field="*{codCurso}" /></p>
+			<p>Porcentaje de cursada: <select th:field="*{porcentajeCursada}">
+				<option value="25">25% Presencial</option>
+				<option value="50">50% Presencial</option>
+				<option value="100">100% Presencial</option>
+			</select></p>
+			<input type="hidden" th:value="${user.username}" th:attr="name='usuarioSolicitante'" />
+			<input type="submit" value="Agregar fechas"/>
+			</form>
+		</div>
+	</div>
 <h2><p><a href="/index">Volver</a></p></h2>
 </body>
 </html>
